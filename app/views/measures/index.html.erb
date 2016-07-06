@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Measures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th>Datetime</th>
+      <th>Name</th>
+      <th>Value</th>
+      <th>User</th>
+      <th>Unit</th>
+      <th>Source</th>
+      <th>Comment</th>
+      <th>Active</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @measures.each do |measure| %>
+      <tr>
+        <td><%= measure.title %></td>
+        <td><%= measure.body %></td>
+        <td><%= measure.datetime %></td>
+        <td><%= measure.name %></td>
+        <td><%= measure.value %></td>
+        <td><%= measure.user_id %></td>
+        <td><%= measure.unit %></td>
+        <td><%= measure.source %></td>
+        <td><%= measure.comment %></td>
+        <td><%= measure.active %></td>
+        <td><%= link_to 'Show', measure %></td>
+        <td><%= link_to 'Edit', edit_measure_path(measure) %></td>
+        <td><%= link_to 'Destroy', measure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Measure', new_measure_path %>
