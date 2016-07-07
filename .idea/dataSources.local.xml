@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Rails fire1foundry: test" uuid="48864609-daff-421d-bac1-35da6502d79d">
-      <user-name>dachtznglenfim</user-name>
-      <user-password>dff0dfc0df9fdfc4dfcddf9fdfdddfe5dfdcdff2df87dfe8dfdcdff0df9bdfc3df9bdfe3dffcdfeedff9dfc3dfd3dfcbdff8dfef</user-password>
-    </data-source>
+    <data-source name="Rails fire1foundry: test" uuid="48864609-daff-421d-bac1-35da6502d79d" />
     <data-source name="Rails fire1foundry: development" uuid="5e69bd9f-f47a-4a24-bf4b-76a85fda3e1d">
       <user-name>dachtznglenfim</user-name>
       <user-password>dff0dfc0df9fdfc4dfcddf9fdfdddfe5dfdcdff2df87dfe8dfdcdff0df9bdfc3df9bdfe3dffcdfeedff9dfc3dfd3dfcbdff8dfef</user-password>
       <schema-pattern>fire1foundry_development.pg_catalog fire1foundry_development.public</schema-pattern>
       <default-schemas>fire1foundry_development.public</default-schemas>
     </data-source>
-    <data-source name="Rails fire1foundry: production" uuid="4cad29d0-d2fb-499e-a67f-cc5ad7b1f3a4">
-      <user-name>dachtznglenfim</user-name>
-      <user-password>dff0dfc0df9fdfc4dfcddf9fdfdddfe5dfdcdff2df87dfe8dfdcdff0df9bdfc3df9bdfe3dffcdfeedff9dfc3dfd3dfcbdff8dfef</user-password>
-    </data-source>
+    <data-source name="Rails fire1foundry: production" uuid="4cad29d0-d2fb-499e-a67f-cc5ad7b1f3a4" />
   </component>
 </project>
