@@ -25,11 +25,10 @@ default: &default
 
 development:
   <<: *default
-  database: deh5magoq0r3sg
-  username: dachtznglenfim
-  password: Zj5ng5wOvX-BvZ1i1IVDSiyaRE
-  sslmode: require
-  host: ec2-54-235-125-135.compute-1.amazonaws.com
+  database: fire1foundry_development
+  username: johncog
+  password: 1havelock
+  host: dashboard.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
   port: 5432
 
   # The specified database role being used to connect to postgres.
@@ -87,4 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: fire1_development
+  username: johncog
+  password: 1havelock
+  host: dashboard.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
+  port: 5432
