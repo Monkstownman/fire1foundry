@@ -17,6 +17,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: johncog
+  password: 1havelock
+  host: dashboard.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
+  port: 5432
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -80,6 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: fire1foundry_production
-  username: fire1foundry
-  password: <%= ENV['FIRE1FOUNDRY_DATABASE_PASSWORD'] %>
+  database: fire1foundry_development

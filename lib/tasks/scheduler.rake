@@ -81,16 +81,12 @@ task :update_measures => :environment do
         source = subjectJSON["measures"][0]["source"]
         comment = ""
 
-        puts 1
-        puts Measure.count
         if Measure.where(datetime: datetime, name: name, user_id: 1).exists?
-          puts 4
           @measure = Measure.where(time: datetime, name: name).first
           @measure.title = subject
           @measure.value = value
           @measure.save
         else
-          puts 3
           @measure = Measure.new("title" => subject, "body" => body, "datetime" => datetime, "name" => name, "value" => value, "user_id" => 1, "unit" => unit, "source" => source, "comment" => comment, "active" => true)
           @measure.save
         end
