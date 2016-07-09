@@ -71,11 +71,11 @@ class DashboardController < ApplicationController
 
     @seriesWeightStr = @seriesWeightStr + "]"
     @seriesSystolicBloodPressureStr = @seriesSystolicBloodPressureStr.gsub(/.{1}$/, '')
-    @seriesSystolicBloodPressureStr = @seriesWeightStr
+    @seriesSystolicBloodPressureStr = @seriesSystolicBloodPressureStr + "]"
     @seriesDiastolicBloodPressureStr = @seriesDiastolicBloodPressureStr.gsub(/.{1}$/, '')
-    @seriesDiastolicBloodPressureStr = @seriesWeightStr
+    @seriesDiastolicBloodPressureStr = @seriesDiastolicBloodPressureStr + "]"
     @seriesHeartRateStr = @seriesHeartRateStr.gsub(/.{1}$/, '')
-    @seriesHeartRateStr =@seriesWeightStr
+    @seriesHeartRateStr = @seriesHeartRateStr + "]"
 
   end
 end
