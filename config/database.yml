@@ -25,7 +25,7 @@ default: &default
 
 development:
   <<: *default
-  database: fire1foundry_development
+  database: ebdb
   username: johncog
   password: 1havelock
   host: aa3epwt26kteif.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
