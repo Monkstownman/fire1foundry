@@ -23,7 +23,7 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://dashboard.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com:5432/fire1foundry_development</jdbc-url>
+      <jdbc-url>jdbc:postgresql://aa3epwt26kteif.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com:5432/fire1foundry_development</jdbc-url>
       <explain-plan-config>
         <provider>com.intellij.database.plan.ExplainPlanProvider.NullExplainPlanProvider</provider>
       </explain-plan-config>
@@ -42,7 +42,7 @@
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://dashboard.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com:5432/fire1foundry_development</jdbc-url>
+      <jdbc-url>jdbc:postgresql://aa3epwt26kteif.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com:5432/aa3epwt26kteif</jdbc-url>
       <libraries>
         <library>
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/postgresql-driver-license.txt</url>

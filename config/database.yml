@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: fire1foundry_development
+  database: aa3epwt26kteif
   username: johncog
   password: 1havelock
   host: aa3epwt26kteif.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
