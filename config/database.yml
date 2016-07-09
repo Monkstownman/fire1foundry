@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: aa3epwt26kteif
+  database: ebdb
   username: johncog
   password: 1havelock
   host: aa3epwt26kteif.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
