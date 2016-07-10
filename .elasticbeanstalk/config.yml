@@ -1,0 +1,11 @@
+branch-defaults:
+  master:
+    environment: fire1foundry-dev
+    group_suffix: null
+global:
+  application_name: fire1foundry
+  default_ec2_keyname: id_rsa_18eaton_120616
+  default_platform: Ruby 2.3 (Puma)
+  default_region: eu-west-1
+  profile: eb-cli
+  sc: git
