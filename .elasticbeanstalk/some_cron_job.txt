@@ -1,2 +1,3 @@
 # The newline at the end of this file is extremely important.  Cron won't run without it.
-* * * * * /bin/bash -l -c 'cd /var/app/current && RAILS_ENV=production bundle exec rake update_measures --silent >> /var/app/current/log/cron.log 2>&1'
+* * * * * root /bin/bash -l -c 'cd /var/app/current && RAILS_ENV=production bundle exec rake update_measures --silent >> /var/app/current/log/cron.log 2>&1'
+
