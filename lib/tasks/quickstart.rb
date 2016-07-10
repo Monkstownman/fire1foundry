@@ -57,9 +57,12 @@ puts result
 unless result.messages.nil?
   puts "asfd"
   result.messages.each { |message|
+    puts "inside message"
+    puts "body"
     body = service.get_user_message(user_id, message.id).snippet.to_s
 
     # part messages header name subject value
+    puts "header"
     puts service.get_user_thread(user_id, message.thread_id).id.to_s
     temp = service.get_user_thread(user_id, message.thread_id).messages
     tempStr = temp.to_s
@@ -79,7 +82,9 @@ unless result.messages.nil?
       comment = ""
 
       puts 1
+     puts "count measures"
       puts Measure.count
+      puts "after count"
       if Measure.where(datetime: datetime, name: name, user_id: 1).exists?
         puts 4
         @measure = Measure.where(time: datetime, name: name).first
@@ -89,7 +94,9 @@ unless result.messages.nil?
       else
         puts 3
         @measure = Measure.new("title" => subject, "body" => body, "datetime" => datetime, "name" => name, "value" => value, "user_id" => 1, "unit" => unit, "source" => source, "comment" => comment, "active" => true)
+        puts 5
         @measure.save
+        puts 6
       end
       modifyRequest = Google::Apis::GmailV1::ModifyMessageRequest.new
       modifyRequest.remove_label_ids = ["UNREAD"]

@@ -23,7 +23,7 @@ task :update_measures => :environment do
 # @return [Google::Auth::UserRefreshCredentials] OAuth2 credentials
   def authorize
     FileUtils.mkdir_p(File.dirname(CREDENTIALS_PATH))
-    client_id = Google::Auth::ClientId.from_hash("installed" => {"client_id" => "115991364553-lo8i94ai8j134mpn8um9och6lqm4vbof.apps.googleusercontent.com", "project_id" =>"focus-terra-136423","auth_uri" => "https://accounts.google.com/o/oauth2/auth","token_uri" => "https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url" => "https://www.googleapis.com/oauth2/v1/certs","client_secret" =>"_ODOItwhJJzoB06stZJaKdu5","redirect_uris" => ["urn:ietf:wg:oauth:2.0:oob","http://localhost"]})
+    client_id = Google::Auth::ClientId.from_hash("installed" => {"client_id" => "115991364553-lo8i94ai8j134mpn8um9och6lqm4vbof.apps.googleusercontent.com", "project_id" => "focus-terra-136423", "auth_uri" => "https://accounts.google.com/o/oauth2/auth", "token_uri" => "https://accounts.google.com/o/oauth2/token", "auth_provider_x509_cert_url" => "https://www.googleapis.com/oauth2/v1/certs", "client_secret" => "_ODOItwhJJzoB06stZJaKdu5", "redirect_uris" => ["urn:ietf:wg:oauth:2.0:oob", "http://localhost"]})
     token_store = Google::Auth::Stores::FileTokenStore.new(file: CREDENTIALS_PATH)
     authorizer = Google::Auth::UserAuthorizer.new(
         client_id, SCOPE, token_store)
@@ -58,7 +58,6 @@ task :update_measures => :environment do
 
   puts result
   unless result.messages.nil?
-    puts "asfd"
     result.messages.each { |message|
       body = service.get_user_message(user_id, message.id).snippet.to_s
 
@@ -70,22 +69,21 @@ task :update_measures => :environment do
       tempStr = tempStr.split("Google").first
       subject = tempStr[11.. -7].gsub('\"', '"')
       begin
-
         subjectJSON = JSON.parse(subject.to_s)
-        puts subjectJSON
         datetime = DateTime.parse(subjectJSON["measures"][0]["time"])
         name = subjectJSON["measures"][0]["name"]
         value = subjectJSON["measures"][0]["value"].tr(',', '')
-        user_id = subjectJSON["measures"][0]["user"]
+        username = subjectJSON["measures"][0]["person"]
+
+
         unit = subjectJSON["measures"][0]["unit"]
         source = subjectJSON["measures"][0]["source"]
         comment = ""
-
-        if Measure.where(datetime: datetime, name: name, user_id: 1).exists?
-          @measure = Measure.where(time: datetime, name: name).first
+        if Measure.where(datetime: datetime, user_id: 1).exists?
+          @measure = Measure.where(datetime: datetime, user_id: user_id).first
           @measure.title = subject
           @measure.value = value
-          @measure.save
+          @measure.save #
         else
           @measure = Measure.new("title" => subject, "body" => body, "datetime" => datetime, "name" => name, "value" => value, "user_id" => 1, "unit" => unit, "source" => source, "comment" => comment, "active" => true)
           @measure.save
@@ -94,13 +92,12 @@ task :update_measures => :environment do
         modifyRequest.remove_label_ids = ["UNREAD"]
         service.modify_message(user_id, message.id, modifyRequest).update!
       rescue
-        puts 2
         next
       end
     }
     puts "Finished..."
   end
-  end
+end
 
 
 
