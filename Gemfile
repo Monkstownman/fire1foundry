@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'whenever', :require => false
 gem 'bigdecimal'
 gem "highcharts-rails", '4.1.5'
 gem 'google-api-client'
