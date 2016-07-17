@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Rails fire1foundry: test" uuid="48864609-daff-421d-bac1-35da6502d79d">
-      <user-name>johncog</user-name>
-    </data-source>
+    <data-source name="Rails fire1foundry: test" uuid="48864609-daff-421d-bac1-35da6502d79d" />
     <data-source name="Rails fire1foundry: development" uuid="5e69bd9f-f47a-4a24-bf4b-76a85fda3e1d">
       <user-name>johncog</user-name>
       <user-password>df9bdfc2dfcbdfdcdfcfdfc6dfc5dfc9dfc1</user-password>
