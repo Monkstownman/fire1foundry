@@ -79,7 +79,7 @@ task :update_measures => :environment do
         unit = subjectJSON["measures"][0]["unit"]
         source = subjectJSON["measures"][0]["source"]
         comment = ""
-        if Measure.where(datetime: datetime, user_id: 1).exists?
+        if Measure.where(name: name, datetime: datetime, user_id: 1).exists?
           @measure = Measure.where(datetime: datetime, user_id: user_id).first
           @measure.title = subject
           @measure.value = value

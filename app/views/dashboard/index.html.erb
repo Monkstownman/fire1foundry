@@ -11,7 +11,52 @@
     }}();
 
     $(function () {
-
+      $('#containerTemperature').highcharts({
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: 'Temperature'
+        },
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            month: '%b',
+            year: '%b'
+          },
+          title: {
+            text: 'Date'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'celsius'
+          },
+          min: 0,
+          plotLines: [{
+            id: 'goal',
+            color: '#FF0000',
+            dashStyle: 'ShortDash',
+            width: 2,
+            value: 88.1,
+            zIndex: 0
+          }]
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              enabled: true
+            }
+          }
+        },
+        series: [{
+          name: 'Temperature',
+          data: <%= raw @seriesTemperatureStr%>
+        }]
+      });
       $('#containerF1F').highcharts({
         chart: {
           type: 'spline'
@@ -427,5 +472,6 @@
 <div id="containerOpenAndClosed" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerMotion" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerREMLightDeep" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+<div id="containerTemperature" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 </body>
 </html>
