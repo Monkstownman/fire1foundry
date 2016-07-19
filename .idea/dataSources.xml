@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2962791720">
+  <component name="DataSourceManagerImpl" format="xml" hash="3648872482">
     <data-source source="LOCAL" name="Rails fire1foundry: test" uuid="48864609-daff-421d-bac1-35da6502d79d">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>

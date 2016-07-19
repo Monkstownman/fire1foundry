@@ -6,6 +6,16 @@ class DashboardController < ApplicationController
     @seriesSystolicBloodPressureStr = "[ "
     @seriesDiastolicBloodPressureStr = "[ "
     @seriesHeartRateStr = "[ "
+    @seriesREMStr = "[ "
+    @seriesLightStr = "[ "
+    @seriesDeepStr = "[ "
+    @seriesSleepScoreStr = "[ "
+    @seriesF1FStr = "[ "
+    @seriesOpenAndClosedStr = "[ "
+    @seriesMotionStr = "[ "
+    @seriesTemperatureStr = "[ "
+
+
     @measures = Measure.where(active: true).order(:datetime)
 
     # Remove measures which are inactive
@@ -52,7 +62,43 @@ class DashboardController < ApplicationController
             @commentPresent = 4
           end
           @seriesHeartRateStr = @seriesHeartRateStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
-        elsif @subjectJSON["measures"][0]["name"] == 'Bank Balance Joint Account'
+        elsif (@subjectJSON["measures"][0]["name"] == "REMEpochs")
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = ((measure.value).to_i/2*1000*60).to_s
+          if (@comment.to_s.blank? == false)
+            @commentPresent = true
+          else
+            @commentPresent = false
+          end
+          @seriesREMStr = @seriesREMStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", dataLabels: {enabled: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif (@subjectJSON["measures"][0]["name"] == "LightEpochs")
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = ((measure.value).to_i/2*1000*60).to_s
+          if (@comment.to_s.blank? == false)
+            @commentPresent = true
+          else
+            @commentPresent = false
+          end
+          @seriesLightStr = @seriesLightStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", dataLabels: {enabled: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif (@subjectJSON["measures"][0]["name"] == "DeepEpochs")
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = ((measure.value).to_i/2*1000*60).to_s
+          if (@comment.to_s.blank? == false)
+            @commentPresent = true
+          else
+            @commentPresent = false
+          end
+          @seriesDeepStr = @seriesDeepStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", dataLabels: {enabled: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif (@subjectJSON["measures"][0]["name"] == "SleepScore")
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = @subjectJSON["measures"][0]["value"]
+          if (@comment.to_s.blank? == false)
+            @commentPresent = true
+          else
+            @commentPresent = false
+          end
+          @seriesSleepScoreStr = @seriesSleepScoreStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", dataLabels: {enabled: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif @subjectJSON["measures"][0]["name"] == 'F1F'
           @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
           @value = @subjectJSON["measures"][0]["value"].tr(',', '')
           if (@comment.to_s.blank? == false)
@@ -60,15 +106,46 @@ class DashboardController < ApplicationController
           else
             @commentPresent = 4
           end
-          @seriesJointStr = @seriesJointStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
-
+          @seriesF1FStr = @seriesF1FStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif @subjectJSON["measures"][0]["name"] == 'Temperature'
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = @subjectJSON["measures"][0]["value"].tr(',', '')
+          if (@comment.to_s.blank? == false)
+            @commentPresent = 8
+          else
+            @commentPresent = 4
+          end
+          @seriesTemperatureStr = @seriesTemperatureStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif @subjectJSON["measures"][0]["name"] == 'OpenAndClosed'
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = @subjectJSON["measures"][0]["value"].tr(',', '')
+          if @value =="0"
+            @oppositeValue = "1"
+          else
+            @oppositeValue = "0"
+          end
+          if (@comment.to_s.blank? == false)
+            @commentPresent = 8
+          else
+            @commentPresent = 4
+          end
+          @seriesOpenAndClosedStr = @seriesOpenAndClosedStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @oppositeValue + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+          @seriesOpenAndClosedStr = @seriesOpenAndClosedStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
+        elsif @subjectJSON["measures"][0]["name"] == 'Motion'
+          @datetime = DateTime.parse(@subjectJSON["measures"][0]["time"])
+          @value = @subjectJSON["measures"][0]["value"].tr(',', '')
+          if (@comment.to_s.blank? == false)
+            @commentPresent = 8
+          else
+            @commentPresent = 4
+          end
+          @seriesMotionStr = @seriesMotionStr + "{name: '" + @comment + "', x: Date.UTC(" + @datetime.year.to_s + ", " + (@datetime.month - 1).to_s + ", " + @datetime.day.to_s + ", " + @datetime.hour.to_s + ", " + @datetime.minute.to_s + ", " + @datetime.second.to_s + "), y: " + @value + ", marker: {radius: " + @commentPresent.to_s + "} , events: { click: function() { window.open('../measures/" + @id.to_s + "/edit','_self'); }} },"
         end
       end
     end
 
     # Remove last , from string
     @seriesWeightStr = @seriesWeightStr.gsub(/.{1}$/, '')
-
     @seriesWeightStr = @seriesWeightStr + "]"
     @seriesSystolicBloodPressureStr = @seriesSystolicBloodPressureStr.gsub(/.{1}$/, '')
     @seriesSystolicBloodPressureStr = @seriesSystolicBloodPressureStr + "]"
@@ -76,6 +153,21 @@ class DashboardController < ApplicationController
     @seriesDiastolicBloodPressureStr = @seriesDiastolicBloodPressureStr + "]"
     @seriesHeartRateStr = @seriesHeartRateStr.gsub(/.{1}$/, '')
     @seriesHeartRateStr = @seriesHeartRateStr + "]"
-
+    @seriesREMStr = @seriesREMStr.gsub(/.{1}$/, '')
+    @seriesREMStr = @seriesREMStr + "]"
+    @seriesLightStr = @seriesLightStr.gsub(/.{1}$/, '')
+    @seriesLightStr = @seriesLightStr + "]"
+    @seriesDeepStr = @seriesDeepStr.gsub(/.{1}$/, '')
+    @seriesDeepStr = "" + @seriesDeepStr + "]"
+    @seriesSleepScoreStr = @seriesSleepScoreStr.gsub(/.{1}$/, '')
+    @seriesSleepScoreStr = "" + @seriesSleepScoreStr + "]"
+    @seriesF1FStr = @seriesF1FStr.gsub(/.{1}$/, '')
+    @seriesF1FStr = @seriesF1FStr + "]"
+    @seriesOpenAndClosedStr = @seriesOpenAndClosedStr.gsub(/.{1}$/, '')
+    @seriesOpenAndClosedStr = @seriesOpenAndClosedStr + "]"
+    @seriesMotionStr = @seriesMotionStr.gsub(/.{1}$/, '')
+    @seriesMotionStr = @seriesMotionStr + "]"
+    @seriesTemperatureStr = @seriesTemperatureStr.gsub(/.{1}$/, '')
+    @seriesTemperatureStr = @seriesTemperatureStr + "]"
   end
 end

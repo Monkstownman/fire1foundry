@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="refresh" content="60">
   <title>Highcharts Example</title>
   <script type="text/javascript">
 
@@ -11,6 +11,155 @@
     }}();
 
     $(function () {
+
+      $('#containerF1F').highcharts({
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: 'Fire1Foundry Heart Measure'
+        },
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            month: '%b',
+            year: '%b'
+          },
+          title: {
+            text: 'Date'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'f1f'
+          },
+          min: 0,
+          plotLines: [{
+            id: 'goal',
+            color: '#FF0000',
+            dashStyle: 'ShortDash',
+            width: 2,
+            value: 88.1,
+            zIndex: 0
+          }]
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              enabled: true
+            }
+          }
+        },
+        series: [{
+          name: 'F1F',
+          data: <%= raw @seriesF1FStr%>
+        }]
+      });
+
+      $('#containerOpenAndClosed').highcharts({
+        chart: {
+          type: 'spline'
+        },
+        title: {
+          text: 'Open Closed Door'
+        },
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            month: '%b',
+            year: '%b'
+          },
+          title: {
+            text: 'Date'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'binary'
+          },
+          min: 0,
+          plotLines: [{
+            id: 'goal',
+            color: '#FF0000',
+            dashStyle: 'ShortDash',
+            width: 2,
+            value: 88.1,
+            zIndex: 0
+          }]
+        },
+        legend: {
+          enabled: false
+        },
+        plotOptions: {
+          spline: {
+            marker: {
+              enabled: true
+            }
+          }
+        },
+        series: [{
+          name: 'Open And Closed',
+          data: <%= raw @seriesOpenAndClosedStr%>
+        }]
+      });
+
+      $('#containerMotion').highcharts({
+        chart: {
+          type: 'column'
+        },
+        title: {
+          text: 'Motion'
+        },
+        xAxis: {
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            month: '%b',
+            year: '%b'
+          },
+          title: {
+            text: 'Date'
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'binary'
+          },
+          min: 0
+        },
+        legend: {
+          align: 'right',
+          x: -30,
+          verticalAlign: 'top',
+          y: 25,
+          floating: true,
+          backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+          borderColor: '#CCC',
+          borderWidth: 1,
+          shadow: false
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            dataLabels: {
+              enabled: false,
+              color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+              style: {
+                textShadow: '0 0 3px black'
+              }
+            }
+          }
+        },
+        series: [
+          {
+            name: 'Motion',
+            data: <%= raw @seriesMotionStr%>
+          }
+        ]
+      });
+
       $('#containerWeight').highcharts({
         chart: {
           type: 'spline'
@@ -57,7 +206,6 @@
           data: <%= raw @seriesWeightStr%>
         }]
       });
-
 
       $('#containerHeartRate').highcharts({
         chart: {
@@ -158,13 +306,126 @@
           }
         ]
       });
+
+      $('#containerREMLightDeep').highcharts({
+
+        chart: {
+          zoonType: 'xy'
+        },
+        title: {
+          text: 'Total Sleep and Sleep Score'
+        },
+        xAxis: [{
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            month: '%b',
+            year: '%b'
+          },
+        }],
+        yAxis: [{ // Primary yAxis
+
+          title: {
+            text: 'Total Sleep hour',
+            style: {
+              color: Highcharts.getOptions().colors[1]
+            }
+          },
+          min: 0,
+          type: 'datetime',
+          dateTimeLabelFormats: { // don't display the dummy year
+            second: '%H:%M',
+            minute: '%H:%M',
+            hour: '%H:%M',
+            day: '%H:%M',
+            week: '%H:%M',
+            month: '%H:%M',
+            year: '%H:%M'
+          },
+          stackLabels: {
+            enabled: false,
+            style: {
+              fontWeight: 'bold',
+              color: (Highcharts.theme && Highcharts.theme.textColor) || 'gray'
+            }
+          }
+        }, { // Secondary yAxis
+          min: 0,
+          max: 100,
+          title: {
+            text: 'Sleep Score %',
+            style: {
+              color: Highcharts.getOptions().colors[0]
+            }
+          },
+          labels: {
+            format: '{value}',
+            style: {
+              color: Highcharts.getOptions().colors[0]
+            }
+          },
+          opposite: true
+        }
+        ],
+        legend: {
+          align: 'vertical',
+          x: 120,
+          verticalAlign: 'top',
+          y: 100,
+          floating: true,
+          backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || 'white',
+          borderColor: '#CCC',
+          borderWidth: 1,
+          shadow: false
+        },
+        plotOptions: {
+          column: {
+            stacking: 'normal',
+            dataLabels: {
+              enabled: false,
+              color: (Highcharts.theme && Highcharts.theme.dataLabelsColor) || 'white',
+              style: {
+                textShadow: '0 0 3px black'
+              }
+            }
+          }
+        },
+        series: [
+          {
+            type: 'column',
+            name: 'REM',
+            data: <%= raw @seriesREMStr%>,
+            yAxis: 0
+          },
+          {
+            type: 'column',
+            name: 'Light',
+            data: <%= raw @seriesLightStr%>,
+            yAxis: 0
+          },
+          {
+            type: 'column',
+            name: 'Deep',
+            data: <%= raw @seriesDeepStr%>,
+            yAxis: 0
+          },
+          {
+            type: 'spline',
+            name: 'Sleep Score',
+            data: <%= raw @seriesSleepScoreStr%>,
+            yAxis: 1
+          }
+        ]
+      });
     })
   </script>
 </head>
 <body>
+<div id="containerF1F" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerWeight" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerHeartRate" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerBloodPressure" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
-
+<div id="containerOpenAndClosed" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+<div id="containerMotion" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+<div id="containerREMLightDeep" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 </body>
 </html>
