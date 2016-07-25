@@ -25,10 +25,10 @@ default: &default
 
 development:
   <<: *default
-  database: ebdb
-  username: johncog
-  password: 1havelock
-  host: aaam9ammr1ch8o.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
+  database: db6dj6vpd12cs4
+  username: ksbbubvlgdtiid
+  password: rNU9ucG-s6j1OJLN-fV240evuZ
+  host: ec2-54-243-220-140.compute-1.amazonaws.com
   port: 5432
 
   # The specified database role being used to connect to postgres.
@@ -86,8 +86,8 @@ test:
 #
 production:
   <<: *default
-  database: ebdb
-  username: johncog
-  password: 1havelock
-  host: aaam9ammr1ch8o.c7pqomrzmv7n.eu-west-1.rds.amazonaws.com
+  database: db6dj6vpd12cs4
+  username: ksbbubvlgdtiid
+  password: rNU9ucG-s6j1OJLN-fV240evuZ
+  host: ec2-54-243-220-140.compute-1.amazonaws.com
   port: 5432

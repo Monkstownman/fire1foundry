@@ -27,9 +27,9 @@ every 1.minutes do
   rake "update_measures"
 end
 
-every :reboot do
-  #command "rm '#{path}/tmp/cache/foo.txt'"
-  #runner
-  rake "update_measures"
+every 1.minute do
+  command "cd /var/app/current && bundle exec ensure_one_cron_leader"
 end
+
+
 
