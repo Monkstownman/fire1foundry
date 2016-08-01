@@ -15,8 +15,10 @@ class DashboardController < ApplicationController
     @seriesMotionStr = "[ "
     @seriesTemperatureStr = "[ "
 
+    lookup_id = request.original_url.split('.')[1].to_i
+    entity_id = Lookup.find(lookup_id).entity_id
 
-    @measures = Measure.where(active: true).order(:datetime)
+    @measures = Measure.where(active: true).where(user_id: entity_id).order(:datetime)
 
     # Remove measures which are inactive
     @measures.all.each do |measure|

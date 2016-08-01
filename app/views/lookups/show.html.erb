@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @lookup.group_id %>
+</p>
+
+<p>
+  <strong>Entity:</strong>
+  <%= @lookup.entity_id %>
+</p>
+
+<%= link_to 'Edit', edit_lookup_path(@lookup) %> |
+<%= link_to 'Back', lookups_path %>

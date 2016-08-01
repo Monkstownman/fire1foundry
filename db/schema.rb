@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706145606) do
+ActiveRecord::Schema.define(version: 20160731183152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "lookups", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "entity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "measures", force: :cascade do |t|
     t.text     "title"
