@@ -15,7 +15,7 @@ class DashboardController < ApplicationController
     @seriesMotionStr = "[ "
     @seriesTemperatureStr = "[ "
 
-    lookup_id = request.original_url.split('.')[1].to_i
+    lookup_id = request.original_url.split('/dashboard.')[1].to_i
     entity_id = Lookup.find(lookup_id).entity_id
 
     @measures = Measure.where(active: true).where(user_id: entity_id).order(:datetime)
