@@ -30,6 +30,7 @@ development:
   password: rNU9ucG-s6j1OJLN-fV240evuZ
   host: ec2-54-243-220-140.compute-1.amazonaws.com
   port: 5432
+  pool: 5
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -91,3 +92,4 @@ production:
   password: rNU9ucG-s6j1OJLN-fV240evuZ
   host: ec2-54-243-220-140.compute-1.amazonaws.com
   port: 5432
+  pool: 20
