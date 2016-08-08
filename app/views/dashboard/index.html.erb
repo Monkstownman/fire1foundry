@@ -22,7 +22,6 @@
           type: 'datetime',
           dateTimeLabelFormats: { // don't display the dummy year
             month: '%b',
-            year: '%b'
           },
           title: {
             text: 'Date'
@@ -62,7 +61,7 @@
           type: 'spline'
         },
         title: {
-          text: 'Fire1Foundry Heart Measure'
+          text: 'IVC Collapsibility'
         },
         xAxis: {
           type: 'datetime',
@@ -76,9 +75,10 @@
         },
         yAxis: {
           title: {
-            text: 'f1f'
+            text: 'IVC Collapsibility'
           },
           min: 0,
+          max: 1,
           plotLines: [{
             id: 'goal',
             color: '#FF0000',
@@ -101,6 +101,7 @@
         series: [{
           name: 'F1F',
           data: <%= raw @seriesF1FStr%>
+
         }]
       });
 
@@ -466,12 +467,13 @@
 </head>
 <body>
 <div id="containerF1F" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
-<div id="containerWeight" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerHeartRate" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerBloodPressure" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+<div id="containerWeight" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+<!--
 <div id="containerOpenAndClosed" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerMotion" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
 <div id="containerREMLightDeep" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
-<div id="containerTemperature" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div>
+<div id="containerTemperature" style="min-width: 310px; max-width: 600px; height: 400px; margin: 0 auto"></div> -->
 </body>
 </html>
